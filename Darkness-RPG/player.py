@@ -3,7 +3,8 @@ import sys, random
 # Definindo uma classe Human
 class Human:
     def __init__(self):
-        self.bolsa = []
+        self.vida = {"Vida": 5}
+        self.bolsa = {}
         self.atributos = {"Força": 5, "Int": 5, "Destreza": 5, "Agi": 5, "Per": 5}
 
     def atualizar_atributo(self, atributo, valor):
