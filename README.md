@@ -1,4 +1,6 @@
-# TextBasedHorrorGame
+# DarknessRPG {An Text Based Horror Game}
+
+Obs: Darkness it's not the definitive name of this game, I don't know what to name it.
 
 This is a text based horror game that I'm making for now. It isn't so optimized since I use so much if/elif/else statements.
 
