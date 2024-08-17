@@ -1,6 +1,6 @@
 import sys
 from time import sleep
-from test import clear_screen
+from start import clear_screen
 
 def DeathbyBelow():
     sleep(1.5)
@@ -46,6 +46,24 @@ def DeathbyNothing():
     sleep(1)
     typing("Ele não está satisfeito")
     sleep(1.5)
+    clear_screen()
+    quit()
+
+def DeathbyCrackingFloor():
+    clear_screen()
+    sleep(1)
+    print("Você pisa em uma madeira podre, mas você não foi ágil o suficiente.\n")
+    sleep(2)
+    print("Você achou que ia cair no primeiro andar\n")
+    sleep(3)
+    clear_screen()
+    typing("Mas.. por que você continua caindo, em pura escuridão?\n")
+    sleep(2)
+    clear_screen()
+    sleep(2)
+    typing("ᕓꝊ𐌂𐌄 𐌍𐌀Ꝋ 𐌔𐌄 𐌋𐌄𐌌𐌁𐌐𐌀, 𐌍𐌀Ꝋ 𐌄?\n")
+    sleep(1)
+    typing("𐌌𐌀𐌔 𐌔𐌄 𐌋𐌄𐌌𐌁𐌐𐌀𐌐𐌀. . .")
     clear_screen()
     quit()
 

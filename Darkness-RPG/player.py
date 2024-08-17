@@ -3,7 +3,7 @@ import sys, random
 # Definindo uma classe Human
 class Human:
     def __init__(self):
-        self.vida = {"Vida": 5}
+        self.vida = {"Vida": 5} #Só há como aumentar via liquido
         self.bolsa = {}
         self.atributos = {"Força": 5, "Int": 5, "Destreza": 5, "Agi": 5, "Per": 5}
 
