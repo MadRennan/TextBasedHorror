@@ -9,7 +9,6 @@ class Game:
     def __init__(self):
         self.player = Human()
         self.room = "Dormitório"
-        self.show_map_flag = False
         # Dicionário de mapas
         self.mapas = {
             "Right_Hallway": '''\nSegundo Andar\nVocê está aqui\n
@@ -20,7 +19,8 @@ class Game:
                               \n[] [] []
                               \n[] [] [*]
                               \n[] [] []'''
-    }
+        }
+
     def clear_screen(self):
         os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -29,12 +29,6 @@ class Game:
         sleep(atraso)
 
     def atualizar_atributo(self, atributo, valor):
-        """
-        Atualiza o valor de um atributo específico.
-
-        :param atributo: O nome do atributo a ser atualizado ('PER', 'FOR', 'AGI', 'INT', 'SAN').
-        :param valor: O valor a ser adicionado ao atributo.
-        """
         atributo = atributo.upper()
         if atributo in self.player.atributos:
             self.player.atributos[atributo] += valor
@@ -49,7 +43,6 @@ class Game:
             else:
                 self.exibir_mensagem(f"\nOpção inválida. Escolha entre {', '.join(opcoes_validas)}.")
 
-
     def run(self):
         while self.room != "Fim":
             if self.room == "Dormitório":
@@ -60,7 +53,6 @@ class Game:
                 self.mid_hallway()
 
     def dormitorio(self):
-        self.room == "Dormitório"
         self.clear_screen()
         sleep(1.5)
         self.exibir_mensagem("Você lentamente abre os seus olhos. . .")
@@ -73,7 +65,7 @@ class Game:
         elif escolha == '2':
             self.olhar_redor(inicial=True)
         elif escolha == '3':
-            self.nada()
+            self.olhar_midhallway()
 
     def levantar(self):
         self.clear_screen()
@@ -88,7 +80,6 @@ class Game:
             elif subescolha == '2':
                 self.exibir_mensagem("\nNão há nada em seus bolsos.")
                 self.clear_screen()
-
 
     def pegar_trapos(self):
         self.clear_screen()
@@ -139,7 +130,6 @@ class Game:
 
     def right_hallway(self):
         self.clear_screen()
-        self.room = "Right_Hallway"
         self.exibir_mensagem("\nVocê está em um corredor estreito.")
         self.exibir_mensagem("\nEstá muito escuro para você ver além disso.")
         self.exibir_mensagem("\nA única luz que ilumina um pouco do corredor, vem da janela.")
@@ -166,7 +156,6 @@ class Game:
             self.exibir_mensagem("\nVocê decide voltar ao corredor escuro...")
             self.exibir_mensagem("\nVocê ainda não vê razão para voltar para o Dormitório, então você segue adiante.")
             self.avanca_corredor()
-
 
     def pegar_lanterna(self):
         escolha = self.obter_entrada_opcao("Pegar a lanterna? [Y/N]: ", ['y', 'n'])
@@ -220,31 +209,21 @@ class Game:
         self.exibir_mensagem("\nHá também dois corredores, pela esquerda e outro pela direita.")
         self.exibir_mensagem("\nAo lado do elevador onde você está, há um tipo de mapa.")
         self.atualizar_atributo("PER", 1)
-
-        while True:
-            if self.show_map_flag:
-                self.show_map_flag = False
-                continue
-
-            escolha = self.obter_entrada_opcao("\n1 - OLHAR MAPA\n2 - IR PARA ESCADAS DE BAIXO\n3 - IR PARA AS ESCADAS DE CIMA\n4 - IR PARA O ELEVADOR: ", ['1', '2', '3', '4'])
-            if escolha == '1':
-                self.mostrar_mapa()
-            elif escolha == '2':
-                self.exibir_mensagem("")
-            elif escolha == '3':
-                self.exibir_mensagem("")
-            elif escolha == '4':
-                self.exibir_mensagem("")
+        escolha = self.obter_entrada_opcao("1 - OLHAR MAPA\n2 - IR PARA ESCADAS DE BAIXO\n3 - IR PARA AS ESCADAS DE CIMA\n4 - IR PARA O ELEVADOR: ", ['1', '2', '3', '4'])
+        if escolha == '1':
+            self.mostrar_mapa()
+        elif escolha == '2':
+            self.exibir_mensagem("")
+        elif escolha == '3':
+            self.exibir_mensagem("")
+        elif escolha == '4':
+            self.exibir_mensagem("")
 
     def mostrar_mapa(self):
         if self.room in self.mapas:
             self.exibir_mensagem(self.mapas[self.room])
         else:
             self.exibir_mensagem("Mapa não disponível para esta região.")
-        self.exibir_mensagem("\nPressione Enter para continuar...")
-        input()  # Aguarda o jogador pressionar Enter para voltar
-        self.show_map_flag = True
-
 
     def nada(self):
         self.clear_screen()
